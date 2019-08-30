@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<title>风尚频道-首页</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/fashion.css">
+	<script>
+        $(function(){
+            $('.top_nav .nav ul li a').mouseenter(function(event) {
+                $(this).css('color', '#b65500').parent('.top_nav .nav ul li').siblings('li').children('a').css('color', '#fff');
+            });
+            $('.top_nav .nav ul li a').mouseleave(function(event) {
+                $(this).css('color', '#fff');
+                $('.top_nav .nav ul li:nth-of-type(3)').children('a').css('color', '#b65500');
+            });
+            $('.top_nav .nav ul li a').click(function(event) {
+                $(this).css('text-decoration', 'none');
+            });
+            $('.top_logo .logo .search').click(function(event) {
+                var value=$('.top_logo .logo .txt').val();
+                if(value==''){
+                    alert('请输入要搜索的内容~');
+                }
+            });
+
+
+            var timer;
+			var num=0;
+			var index=0;
+			function banner(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					num++;
+					if(num>2){
+						$('.fashion .fashion_banner .slide ul').css('left', 0+'px');
+						num=1;
+					}
+					if(num==2){
+                        index=0;
+                        $('.fashion .fashion_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.fashion .fashion_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.fashion .fashion_banner .slide ul').animate({left: -num*1000+'px'},500);
+					
+				},2000);
+			}
+			// 点击小圆圈
+			$('.fashion .fashion_banner .cicle ol li').click(function(event) {
+				$(this).addClass('current').siblings('li').removeClass('current');
+				num=$(this).index();
+				$('.fashion .fashion_banner .slide ul').animate({left: -num*1000+'px'},500);
+				
+			});
+			banner();
+			// 焦点图移入移出
+			$('.fashion .fashion_banner').mouseenter(function(event) {
+				clearInterval(timer);
+			});
+			$('.fashion .fashion_banner').mouseleave(function(event) {
+				banner();
+			});
+
+			
+
+			// 焦点图点击
+			$('.fashion .fashion_banner #span_left').click(function(event) {
+				clearInterval(timer);
+				timer=setTimeout(function(){
+					num++;
+					if(num>2){
+						$('.fashion .fashion_banner .slide ul').css('left', 0+'px');
+						num=1;
+					}
+					if(num==2){
+                        index=0;
+                        $('.fashion .fashion_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.fashion .fashion_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.fashion .fashion_banner .slide ul').animate({left: -num*1000+'px'},500);
+					
+				},1000);				
+			});
+			$('.fashion .fashion_banner #span_right').click(function(event) {
+				clearInterval(timer);
+				timer=setTimeout(function(){
+					num--;
+					if(num<0){
+						$('.fashion .fashion_banner .slide ul').css('left', -2000+'px');
+						num=1;
+					}
+					if(num==0){
+                        index=0;
+                        $('.fashion .fashion_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.fashion .fashion_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.fashion .fashion_banner .slide ul').animate({left: -num*1000+'px'},500);	
+							
+				},1000);		
+			});
+
+			// 点击内容动态
+			
+			$('.content .con ul li').hover(function() {
+				var conli=$(this).index();
+				console.log(conli);
+				$('.content .con ul li').eq(conli).children('a').children('h4').css('bottom', '-155px').parents('li').siblings('li').children('a').children('h4').css('bottom', '-193px');
+				$('.content .con ul li').eq(conli).css('opacity', '0.8').siblings('li').css('opacity', '1');
+				$('.content .con ul li').eq(conli).css('transform', 'scale(1.1)').siblings('li').css('transform', 'scale(1)');
+			}, function() {
+				$('.content .con ul li').css('opacity', '1');
+				$('.content .con ul li a h4').css('bottom', '-193px');
+				$('.content .con ul li').css('transform', 'scale(1)');
+			});
+
+        })
+    </script>
+</head>
+<body>
+	<!-- 顶部logo -->
+	<div class="top_logo">
+		<div class="logo layout">
+			<img src="images/logo.png" alt="">
+			<input type="text" class="txt"><input type="submit" value="搜索" class="search">
+		</div>		
+	</div>
+	<!-- 顶部导航栏 -->
+	<div class="top_nav">
+		<div class="nav">
+			<ul>
+				<li class="frist">
+					<a href="index.html">首页</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="fashion.html">风尚</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="beauty.html">美容</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="life.html">生活</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="stars.html">娱乐</a>
+				</li>
+			</ul>
+		</div>	
+	</div>
+	<!-- 风尚区 -->
+	<div class="fashion">
+		<!-- 风尚轮播图 -->
+		<div class="fashion_banner">
+			<span class="glyphicon glyphicon-menu-left" id="span_left"></span>
+			<span class="glyphicon glyphicon-menu-right" id="span_right"></span>
+			
+			<div class="slide">
+				<ul>
+					<li>
+						<h3>张靓颖 | 非标准性感</h3>
+						<img src="images/fashion_silde01.jpg" alt="">
+					</li>
+					<li>
+						<h3>王力宏 | 百炼成钢的优质偶像</h3>
+						<img src="images/fashion_silde02.jpg" alt="">
+					</li>
+					<li>
+						<h3>张靓颖 | 非标准性感</h3>
+						<img src="images/fashion_silde01.jpg" alt="">
+					</li>
+				</ul>
+				<div class="cicle">
+				<ol>
+					<li class="current"></li>
+					<li></li>
+				</ol>
+			</div>
+			</div>
+		</div>
+	</div>
+	<!-- 风尚左边头部导航（背景） -->
+	<div class="fashion_nav">
+		<p></p>
+		<ul>
+			<li>
+				<a href="#">时装</a>
+			</li>				
+			<li>
+				<a href="#">包包</a>
+			</li>				
+			<li>
+				<a href="#">鞋履</a>
+			</li>
+			<li>
+				<a href="#">珠宝</a>
+			</li>
+			<li>
+				<a href="#">腕表</a>
+			</li>
+			<li>
+				<a href="#">搭配</a>
+			</li>
+		</ul>
+	</div>
+	
+	<!-- 风尚轮播图下面 -->
+	<div class="content">	
+		<div class="con">
+			<ul>
+				<li><a href="#"><h4>刘涛 | 未来总比开局精彩</h4><img src="images/fashion_con01.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>黄璐 | 放下自我</h4><img src="images/fashion_con02.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>腾格尔 | 老要张狂少要稳</h4><img src="images/fashion_con03.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>韩丹彤 | 不只简单的美丽</h4><img src="images/fashion_con04.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>王嘉 | 与时代共搏</h4><img src="images/fashion_con05.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>李易峰 | 荣耀还将继续</h4><img src="images/fashion_con06.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>韩雪 | 这个姑娘不太冷</h4><img src="images/fashion_con07.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>大S徐熙媛 | 回春的怪女孩</h4><img src="images/fashion_con08.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>刘涛 | 遇见最好的自己</h4><img src="images/fashion_con09.jpeg" alt=""></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer_nav">
+			<img src="images/logo_footer.png" alt="">
+			<div class="nav">
+				<ul>
+					<li>
+						<a href="#">关于我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">合作媒体</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">联系我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">隐私声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">版权声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">加入我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">关于时尚</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer_text">
+				©1998-2018 北京时尚在线网络服务有限公司 版权所有 TRENDS.COM.CN All Rights Reserved. <br> 京ICP备08004417号-19 | <a href="#">京公网安备11010502034577号</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

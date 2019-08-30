@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<title>生活频道-首页</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/life.css">
+	<script>
+		$(function(){
+			$('.top_nav .nav ul li a').mouseenter(function(event) {
+                $(this).css('color', '#b65500').parent('.top_nav .nav ul li').siblings('li').children('a').css('color', '#fff');
+            });
+            $('.top_nav .nav ul li a').mouseleave(function(event) {
+                $(this).css('color', '#fff');
+                $('.top_nav .nav ul li:nth-of-type(7)').children('a').css('color', '#b65500');
+            });
+            $('.top_nav .nav ul li a').click(function(event) {
+                $(this).css('text-decoration', 'none');
+            });
+            $('.top_logo .logo .search').click(function(event) {
+                var value=$('.top_logo .logo .txt').val();
+                if(value==''){
+                    alert('请输入要搜索的内容~');
+                }
+            });
+
+            // 轮播图
+            var timer;
+			var num=0;
+			var index=0;
+			function banner(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					num++;
+					if(num>2){
+						$('.life .life_banner .slide ul').css('left', 0+'px');
+						num=1;
+					}
+					if(num==2){
+                        index=0;
+                        $('.life .life_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.life .life_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.life .life_banner .slide ul').animate({left: -num*1000+'px'},500);
+					
+				},2000);
+			}
+			// 点击小圆圈
+			$('.life .life_banner .cicle ol li').click(function(event) {
+				$(this).addClass('current').siblings('li').removeClass('current');
+				num=$(this).index();
+				$('.life .life_banner .slide ul').animate({left: -num*1000+'px'},500);
+				
+			});
+			banner();
+			// 焦点图移入移出
+			$('.life .life_banner').mouseenter(function(event) {
+				clearInterval(timer);
+			});
+			$('.life .life_banner').mouseleave(function(event) {
+				banner();
+			});
+
+			
+
+			// 焦点图点击
+			$('.life .life_banner #span_left').click(function(event) {
+				clearInterval(timer);
+				timer=setTimeout(function(){
+					num++;
+					if(num>2){
+						$('.life .life_banner .slide ul').css('left', 0+'px');
+						num=1;
+					}
+					if(num==2){
+                        index=0;
+                        $('.life .life_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.life .life_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.life .life_banner .slide ul').animate({left: -num*1000+'px'},500);
+					
+				},1000);				
+			});
+			$('.life .life_banner #span_right').click(function(event) {
+				clearInterval(timer);
+				timer=setTimeout(function(){
+					num--;
+					if(num<0){
+						$('.life .life_banner .slide ul').css('left', -2000+'px');
+						num=1;
+					}
+					if(num==0){
+                        index=0;
+                        $('.life .life_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.life .life_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.life .life_banner .slide ul').animate({left: -num*1000+'px'},500);	
+							
+				},1000);		
+			});
+
+
+             // 滚轮触发和按键触发事件
+			$(window).scroll(function(event) {
+				var heg=$(window).scrollTop();
+				var ulheg=$('.content .con').children('ul.a').offset().top;
+				var ulheg1=$('.content .con').children('ul.b').offset().top;
+				console.log(heg);
+				console.log(ulheg);
+				if(heg>(ulheg+150)){
+					$('.content .con ul.b').css('display', 'block');
+					$('.btn button').css('display', 'block');
+				}
+				if(heg>(ulheg1+150)){
+					$('.content .con ul.c').css('display', 'block');
+					$('.btn button').css('display', 'block');
+				}
+				if(heg<ulheg){
+					$('.content .con ul.b').css('display', 'none');
+					$('.content .con ul.c').css('display', 'none');
+					$('.btn button').css('display', 'block');
+					$('.btn button').click(function(event) {
+						$('.content .con ul.b').css('display', 'block');
+						$('.btn button').css('display', 'block');
+					});
+				}
+				if(heg<ulheg1){
+					$('.content .con ul.c').css('display', 'none');
+					$('.btn button').css('display', 'block');
+					$('.btn button').click(function(event) {
+						$('.content .con ul.c').css('display', 'block');
+						$('.btn button').css('display', 'block');
+					});
+				}
+			});
+
+		})
+	</script>
+</head>
+<body>
+	<!-- 顶部logo -->
+	<div class="top_logo container">
+		<div class="logo">
+			<img src="images/logo.png" alt="">
+			<input type="text" class="txt"><input type="submit" value="搜索" class="search">
+		</div>		
+	</div>
+	<!-- 顶部导航栏 -->
+	<div class="top_nav">
+		<div class="nav">
+			<ul>
+				<li class="frist">
+					<a href="index.html">首页</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="fashion.html">风尚</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="beauty.html">美容</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="life.html">生活</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="stars.html">娱乐</a>
+				</li>
+			</ul>
+		</div>	
+	</div>
+
+	<!-- 生活区 -->
+	<div class="life">
+		<!-- 生活轮播图 -->
+		<div class="life_banner">
+			<span class="glyphicon glyphicon-menu-left" id="span_left"></span>
+			<span class="glyphicon glyphicon-menu-right" id="span_right"></span>
+			
+			<div class="slide">
+				<ul>
+					<li>
+						<h3>姜潮 &amp; 麦迪娜 | 爱情超进阶</h3>
+						<img src="images/life_banner01.jpg" alt="">
+					</li>
+					<li>
+						<h3>许飞 | 把父亲的沉默，谱写成歌</h3>
+						<img src="images/life_banner02.jpg" alt="">
+					</li>
+					<li>
+						<h3>姜潮 &amp; 麦迪娜 | 爱情超进阶</h3>
+						<img src="images/life_banner01.jpg" alt="">
+					</li>
+				</ul>
+				<div class="cicle container">
+					<ol>
+						<li class="current"></li>
+						<li></li>
+					</ol>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<!-- 生活头部导航（背景） -->
+	<div class="life_nav">
+		<p></p>
+		<ul>
+			<li>
+				<a href="#">资讯</a>
+			</li>				
+			<li>
+				<a href="#">装修</a>
+			</li>				
+			<li>
+				<a href="#">菜谱</a>
+			</li>
+			<li>
+				<a href="#">目的地</a>
+			</li>
+			<li>
+				<a href="#">旅行攻略</a>
+			</li>
+			<li>
+				<a href="#">酒店</a>
+			</li>
+		</ul>
+	</div>
+	
+	<!-- 生活轮播图下面 -->
+	<div class="content">	
+		<div class="con">
+			<ul class="a" style="display: block;">
+				<li><a href="#"><h4>王昱珩 | 宠爱力Max 的“超脑”爸爸</h4><img src="images/life_leftpic01.jpg" alt=""></li>
+				<li><a href="#"><h4>张伦硕 | 父女间的信任，是蜜糖味的</h4><img src="images/life_leftpic02.jpg" alt=""></a></li>
+				<li><a href="#"><h4>我的人生与你不同</h4><img src="images/life_rigpic01.jpg" alt=""></a></li>
+				<li><a href="#"><h4>陈小春 &amp; 应采儿 | 你是我人生中的第二个太阳</h4><img src="images/life_rigpic02.jpg" alt=""></a></li>
+				<li><a href="#"><h4>六道纯粹的美味蔬菜，为你的肠胃减负</h4><img src="images/life_rigpic04.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>渝东南——让身心住进野外，尽享野奢真趣</h4><img src="images/life_con05.jpeg" alt=""></a></li>
+			</ul>
+			<ul class="b"  style="display: none;">
+				<li><a href="#"><h4>在洛杉矶跨年？收好这篇地表最强攻略！</h4><img src="images/life_con06.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>《碟中谍6》全国上映，跟着阿汤哥在新西兰嗨翻天</h4><img src="images/life_con07.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>你依然年轻，何不给自己一次去冒险的机会？</h4><img src="images/life_con08.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>重庆火锅 麻辣爽口不上火？</h4><img src="images/life_con09.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>厨房换新 11款本季主打造型</h4><img src="images/life_con10.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>南京 巷弄里的民国</h4><img src="images/life_con11.jpeg" alt=""></a></li>
+			</ul>
+			<ul class="c"  style="display: none;">
+				<li><a href="#"><h4>自驾云南不新鲜，这样玩才算时髦客</h4><img src="images/life_con12.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>炉端烧 追寻海鲜本味</h4><img src="images/life_con13.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>全新劳斯莱斯SUV库里南 为坚毅之士准备的钻石</h4><img src="images/life_con14.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>跨越地球经纬，寻找夜空中最亮的星</h4><img src="images/life_con15.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>艾莱依签约毛晓彤成为其2018品牌形象大使</h4><img src="images/life_con16.jpeg" alt=""></a></li>
+				<li><a href="#"><h4>全球知名牵手照夫妻拍摄重庆之美 -- 重庆IFS成为首个打卡地</h4><img src="images/life_con17.jpeg" alt=""></a></li>
+			</ul>
+		</div>
+		<div class="btn"><button>加载更多</button></div>
+	</div>
+	
+	<div class="footer">
+		<div class="footer_nav">
+			<img src="images/logo_footer.png" alt="">
+			<div class="nav">
+				<ul>
+					<li>
+						<a href="#">关于我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">合作媒体</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">联系我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">隐私声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">版权声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">加入我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">关于时尚</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer_text">
+				©1998-2018 北京时尚在线网络服务有限公司 版权所有 TRENDS.COM.CN All Rights Reserved. <br> 京ICP备08004417号-19 | <a href="#">京公网安备11010502034577号</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

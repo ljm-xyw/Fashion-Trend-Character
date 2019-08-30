@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon.ico">
+	<title>时尚网-潮品格 新时尚</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/base.js"></script>	
+	<script>
+		$(function(){
+			var timer;
+			var num=0;
+			var index=0;
+			function banner(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					num++;
+					if(num>3){
+						$('.top_focus_wrap .foucs_pic ul').css('left', -1000+'px');
+						num=1;
+					}
+					if(num==3){
+                        index=0;
+                        $('.top_focus_wrap .foucs_pic .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.top_focus_wrap .foucs_pic .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.top_focus_wrap .foucs_pic ul').animate({left: -(num+1)*1000+'px'},500);
+					
+				},3000);
+			}
+			banner();
+			// 焦点图移入移出
+			$('.top_focus_wrap').mouseenter(function(event) {
+				clearInterval(timer);
+				$('.top_focus_wrap .foucs_pic span').css('opacity', '1');
+			});
+			$('.top_focus_wrap').mouseleave(function(event) {
+				banner();
+				$('.top_focus_wrap .foucs_pic span').css('opacity', '0');
+			});
+
+			// 点击小圆圈
+			$('.top_focus_wrap .foucs_pic .cicle ol li').click(function(event) {
+				$(this).addClass('current').siblings('').removeClass('current');
+				num=$(this).index();
+				$('.top_focus_wrap .foucs_pic ul').animate({left: -(num+1)*1000+'px'},500);
+				
+			});
+
+			// 焦点图点击
+			$('.top_focus_wrap .foucs_pic #span_left').click(function(event) {
+				clearInterval(timer);
+				timer=setTimeout(function(){
+					num++;
+					if(num>3){
+						$('.top_focus_wrap .foucs_pic ul').css('left',-1000+'px');
+						num=1;
+					}
+					if(num==3){
+                        index=0;
+                        $('.top_focus_wrap .foucs_pic .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.top_focus_wrap .foucs_pic .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.top_focus_wrap .foucs_pic ul').animate({left: -(num+1)*1000+'px'},500);
+					
+				},1000);				
+			});
+			$('.top_focus_wrap .foucs_pic #span_right').click(function(event) {
+				clearInterval(timer);
+				timer=setTimeout(function(){
+					num--;
+					if(num<0){
+						$('.top_focus_wrap .foucs_pic ul').css('left', -4000+'px');
+						num=2;
+					}
+					if(num==0){
+                        index=0;
+                        $('.top_focus_wrap .foucs_pic .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.top_focus_wrap .foucs_pic .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.top_focus_wrap .foucs_pic ul').animate({left: -(num+1)*1000+'px'},500);	
+							
+				},1000);		
+			});
+
+			// 今日推荐
+			$('.today_hot .left .pic_text ol li').hover(function() {
+				index=$(this).index();
+				$('.today_hot .left .pic_text ol li').eq(index).css('color', '#f16f01');
+				$('.today_hot .left .pic_text ul').children('li').eq(index).css('opacity', '1');
+			}, function() {
+				$('.today_hot .left .pic_text ol li').css('color', '#000');
+				$('.today_hot .left .pic_text ul').children('li').eq(0).css('opacity', '1').siblings('li').css('opacity', '0');;
+			});
+
+			// 旅游
+			$('.travel .pic ul li').hover(function() {
+				var picnum=$(this).index();
+				$(this).css('opacity', '0.6').siblings('li').css('opacity', '1');
+			}, function() {
+				$('.travel .pic ul li').css('opacity', '1');
+			});
+
+
+			// 态度
+			$('.atitude .pic ul li').hover(function() {
+				var linum=$(this).index();
+				$('.atitude .pic ul li').eq(linum).children('a').css({
+					bottom: '0px',
+					backgroundColor: 'rgba(0, 0, 0, 0.3)'
+				});
+			}, function() {
+				$('.atitude .pic ul li').children('a').css({
+					bottom: '-50px',
+					backgroundColor: 'rgba(0, 0, 0, 1)'
+				});
+			});
+
+				
+			// 视觉
+			for(var i=0;i<10;i++){
+				$('.vison .pic ul li').eq(i).hover(function() {
+					$(this).children('.cover').css('display', 'block').parent().siblings('li').children('.cover').css('display', 'none');
+				}, function() {
+					$('.vison .pic ul li .cover').css('display', 'none');
+				});
+			}
+			
+		})
+	</script>
+</head>
+<body>
+	<!-- 顶部logo -->
+	<div class="top_logo">
+		<div class="logo layout">
+			<img src="images/logo.png" alt="">
+			<input type="text" class="txt"><input type="submit" value="搜索" class="search">
+		</div>		
+	</div>
+	<!-- 顶部导航栏 -->
+	<div class="top_nav">
+		<div class="nav">
+			<ul>
+				<li class="frist">
+					<a href="index.html">首页</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="fashion.html">风尚</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="beauty.html">美容</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="life.html">生活</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="stars.html">娱乐</a>
+				</li>
+			</ul>
+		</div>	
+	</div>
+	<!-- 顶部轮播焦点图 -->
+	<div class="top_focus_wrap">
+		<!-- 顶部焦点图左边阴影 -->
+		<div class="shadow_left"></div>
+		<!-- 顶部焦点图右边阴影 -->
+		<div class="shadow_right"></div>	
+		<!-- 中心焦点图 -->
+		<div class="foucs_pic">
+			<ul>
+				<li>
+					<img src="images/banner03.jpg" alt="">
+					<!-- 图片标题 -->
+					<div class="title">
+						<h3>宋轶 | 冰激凌海报</h3>
+						<p></p>
+					</div>
+				</li>
+				<li>
+					<img src="images/banner01.jpg" alt="">
+					<!-- 图片标题 -->
+					<div class="title">
+						<h3>杨洋和全职高手们</h3>
+						<p></p>
+					</div>
+				</li>
+				<li>
+					<img src="images/banner02.jpg" alt="">
+					<!-- 图片标题 -->
+					<div class="title">
+						<h3>姜潮 &amp; 麦迪娜 | 爱情超进阶</h3>
+						<p></p>
+					</div>
+				</li>
+				<li>
+					<img src="images/banner03.jpg" alt="">
+					<!-- 图片标题 -->
+					<div class="title">
+						<h3>宋轶 | 冰激凌海报</h3>
+						<p></p>
+					</div>
+				</li>
+				<li>
+					<img src="images/banner01.jpg" alt="">
+					<!-- 图片标题 -->
+					<div class="title">
+						<h3>杨洋和全职高手们</h3>
+						<p></p>
+					</div>
+				</li>
+				<li>
+					<img src="images/banner02.jpg" alt="">
+					<!-- 图片标题 -->
+					<div class="title">
+						<h3>姜潮 &amp; 麦迪娜 | 爱情超进阶</h3>
+						<p></p>
+					</div>
+				</li>
+				<li>
+					<img src="images/banner03.jpg" alt="">
+					<!-- 图片标题 -->
+					<div class="title">
+						<h3>宋轶 | 冰激凌海报</h3>
+						<p></p>
+					</div>
+				</li>
+			</ul>
+			<!-- 焦点图点击小箭头 -->
+			<span class="glyphicon glyphicon-menu-left" id="span_left"></span>
+			<span class="glyphicon glyphicon-menu-right" id="span_right"></span>
+			<!-- 焦点图底下小圆圈 -->
+			<div class="cicle">
+				<ol>
+					<li class="current"></li>
+					<li></li>
+					<li></li>
+		
+				</ol>
+			</div>	
+		</div>
+	</div>
+	<!-- 今日推荐区 -->
+	<div class="today_hot">
+		<!-- 左边今日推荐 -->
+		<div class="left">
+			<h3 class="headtitle">今日推荐</h3>
+			<!-- 图文 -->
+			<div class="pic_text">
+				<div class="pic">
+					<ul>
+						<li style="opacity: 1"><img src="images/day_photo01.jpg" alt=""></li>
+						<li style="opacity: 0"><img src="images/day_photo02.jpg" alt=""></li>
+						<li style="opacity: 0"><img src="images/day_photo03.jpg" alt=""></li>
+						<li style="opacity: 0"><img src="images/day_photo04.jpg" alt=""></li>
+						<li style="opacity: 0"><img src="images/day_photo05.jpg" alt=""></li>
+						<li style="opacity: 0"><img src="images/day_photo06.jpg" alt=""></li>
+					</ul>
+				</div>
+				<ol>
+					<li><i>1.</i>许飞 | 把父亲的沉默，谱写成歌</li>
+					<li><i>2.</i>炎炎夏日 如何把白色穿得清爽又高级</li>
+					<li><i>3.</i>薛兆丰 | 理智拯救世界</li>
+					<li><i>4.</i>在澳门吃遍世界味道</li>
+					<li><i>5.</i>杨祐宁 | 漂在海上的片刻</li>
+					<li><i>6.</i>年轻的导演</li>
+				</ol>
+			</div>
+		</div>
+		<!-- 右边朴信惠图 -->
+		<div class="right">
+			<img src="images/piao_xin_hui.jpg" alt="">
+		</div>
+	</div>
+	<!-- 旅游 -->
+	<div class="travel">
+		<div class="head">
+			<h3>旅游圣地</h3>
+			<i>TRAVEL</i>
+		</div>
+		<div class="pic">
+			<ul>
+				<li><img src="images/travel01.jpg" alt=""><a href="#">梦幻海滩度假指南</a></li>
+				<li><img src="images/travel02.jpg" alt=""><a href="#">克罗地亚美食圣经</a></li>
+				<li><img src="images/travel03.jpg" alt=""><a href="#">北英伦漫游奇境</a></li>
+				<li><img src="images/travel04.jpg" alt=""><a href="#">自然奢华新欧洲</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 态度 -->
+	<div class="atitude">
+		<div class="head col-sm-12">
+			<h3>态度</h3>
+			<i>GLOBAL</i>
+		</div>
+		<div class="pic">
+			<ul>
+				<li><img src="images/colbal01.jpg" alt=""><a href="#">30个搭配方案让你的4月美得不纠结</a></li>
+				<li><img src="images/clobal02.jpg" alt=""><a href="#">5件出席教堂式婚礼裙子</a></li>
+				<li><img src="images/clobal03.png" alt=""><a href="#">它们是巴黎的5个标签</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 视觉焦点 -->
+	<div class="vison">
+		<div class="head">
+			<h3>视觉焦点</h3>
+			<i>VISON</i>
+		</div>
+		<div class="pic">
+			<ul>
+				<li class="big">
+					<img src="images/vison_big.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>宋轶 | 冰激凌海报</h4>
+					</div>
+				</li>
+				<li>
+					<img src="images/vison_sma01.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>徐熙媛、徐熙娣 | 我们大概上辈子是情人</h4>
+					</div>
+				</li>
+				<li>
+					<img src="images/vison_sma02.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>辛芷蕾的时光故事</h4>
+					</div>
+				</li>
+				<li>
+					<img src="images/vison_sma03.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>林鹏的霓虹港风Style</h4>
+					</div>
+				</li>
+				<li>
+					<img src="images/vison_sma04.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>佟丽娅 | 用镜头记录她的优雅与妩媚</h4>
+					</div>
+				</li>
+				<li>
+					<img src="images/vison_sma05.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>曾美慧孜 | 平行宇宙中哪个才是真的我</h4>
+					</div>
+				</li>
+				<li>
+					<img src="images/vison_sma06.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>街头花衬衫的趣搭配</h4>
+					</div>
+				</li>
+				<li>
+					<img src="images/vison_sma07.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>宫色陈小纭 美得不可方物</h4>
+					</div>
+				</li>
+				<li>
+					<img src="images/vison_sma08.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>倪妮 | 伊人千面 英姿绰约</h4>
+					</div>
+				</li>
+				<li>
+					<img src="images/vison_sma09.jpg" alt="">
+					<div class="cover" style="display: none">
+						<span class="glyphicon glyphicon-camera"></span>
+						<h4>寒冷的冬天 外套、皮衣、夹克叠穿起来吧！</h4>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div> 
+	<!-- 底部导航栏 -->
+	<div class="footer">
+		<div class="footer_nav">
+			<img src="images/logo_footer.png" alt="">
+			<div class="nav">
+				<ul>
+					<li>
+						<a href="#">关于我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">合作媒体</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">联系我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">隐私声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">版权声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">加入我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">关于时尚</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer_text">
+				©1998-2018 北京时尚在线网络服务有限公司 版权所有 TRENDS.COM.CN All Rights Reserved. <br> 京ICP备08004417号-19 | <a href="#">京公网安备11010502034577号</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

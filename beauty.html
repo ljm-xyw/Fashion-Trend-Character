@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<title>美容频道-首页</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/beauty.css">
+	<script>
+        $(function(){
+            $('.top_nav .nav ul li a').mouseenter(function(event) {
+                $(this).css('color', '#b65500').parent('.top_nav .nav ul li').siblings('li').children('a').css('color', '#fff');
+            });
+            $('.top_nav .nav ul li a').mouseleave(function(event) {
+                $(this).css('color', '#fff');
+                $('.top_nav .nav ul li:nth-of-type(5)').children('a').css('color', '#b65500');
+            });
+            $('.top_nav .nav ul li a').click(function(event) {
+                $(this).css('text-decoration', 'none');
+            });
+            $('.top_logo .logo .search').click(function(event) {
+                var value=$('.top_logo .logo .txt').val();
+                if(value==''){
+                    alert('请输入要搜索的内容~');
+                }
+            });
+
+            var timer;
+			var num=0;
+			var index=0;
+			function banner(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					num++;
+					if(num>2){
+						$('.beauty .beauty_banner .slide ul').css('left', 0+'px');
+						num=1;
+					}
+					if(num==2){
+                        index=0;
+                        $('.beauty .beauty_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.beauty .beauty_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.beauty .beauty_banner .slide ul').animate({left: -num*1000+'px'},500);
+					
+				},2000);
+			}
+			// 点击小圆圈
+			$('.beauty .beauty_banner .cicle ol li').click(function(event) {
+				$(this).addClass('current').siblings('li').removeClass('current');
+				num=$(this).index();
+				$('.beauty .beauty_banner .slide ul').animate({left: -num*1000+'px'},500);
+				
+			});
+			banner();
+			// 焦点图移入移出
+			$('.beauty .beauty_banner').mouseenter(function(event) {
+				clearInterval(timer);
+			});
+			$('.beauty .beauty_banner').mouseleave(function(event) {
+				banner();
+			});
+
+			
+
+			// 焦点图点击
+			$('.beauty .beauty_banner #span_left').click(function(event) {
+				clearInterval(timer);
+				timer=setTimeout(function(){
+					num++;
+					if(num>2){
+						$('.beauty .beauty_banner .slide ul').css('left', 0+'px');
+						num=1;
+					}
+					if(num==2){
+                        index=0;
+                        $('.beauty .beauty_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.beauty .beauty_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.beauty .beauty_banner .slide ul').animate({left: -num*1000+'px'},500);
+					
+				},1000);				
+			});
+			$('.beauty .beauty_banner #span_right').click(function(event) {
+				clearInterval(timer);
+				timer=setTimeout(function(){
+					num--;
+					if(num<0){
+						$('.beauty .beauty_banner .slide ul').css('left', -2000+'px');
+						num=1;
+					}
+					if(num==0){
+                        index=0;
+                        $('.beauty .beauty_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.beauty .beauty_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+					$('.beauty .beauty_banner .slide ul').animate({left: -num*1000+'px'},500);	
+							
+				},1000);		
+			});
+
+		// 内容区导航及内容
+		$('.content .con ol li').click(function(event){
+			var navindex=$(this).index();
+			$('.content .con ol li').eq(navindex).children('a').css({
+				backgroundColor: 'rgba(0, 0, 0, 0.6)',
+				color: '#fff',
+				textDecoration: 'none'
+			}).parent().siblings('li').children('a').css({
+				backgroundColor: 'rgba(0, 0, 0, 0)',
+				color: '#666',
+				textDecoration: 'none'
+			}).parents('ol').siblings('.ul').children('ul').eq(navindex).css('opacity', '1').siblings('ul').css('opacity', '0');
+		});
+
+        })
+    </script>
+</head>
+<body>
+	<!-- 顶部logo -->
+	<div class="top_logo">
+		<div class="logo">
+			<img src="images/logo.png" alt="">
+			<input type="text" class="txt"><input type="submit" value="搜索" class="search">
+		</div>		
+	</div>
+	<!-- 顶部导航栏 -->
+	<div class="top_nav">
+		<div class="nav">
+			<ul>
+				<li class="frist">
+					<a href="index.html">首页</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="fashion.html">风尚</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="beauty.html">美容</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="life.html">生活</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="stars.html">娱乐</a>
+				</li>
+			</ul>
+		</div>	
+	</div>
+	<!-- 美容区 -->
+	<div class="beauty">
+		<!-- 美容轮播图 -->
+		<div class="beauty_banner container">
+			<span class="glyphicon glyphicon-menu-left" id="span_left"></span>
+			<span class="glyphicon glyphicon-menu-right" id="span_right"></span>
+			
+			<div class="slide">
+				<ul>
+					<li>
+						<h3>直面脆弱 让美丽变坚强</h3>
+						<img src="images/beauty_banner01.jpg" alt="">
+					</li>
+					<li>
+						<h3>精致女孩，从洗“对头”开始</h3>
+						<img src="images/beauty_banner02.jpg" alt="">
+					</li>
+					<li>
+						<h3>直面脆弱 让美丽变坚强</h3>
+						<img src="images/beauty_banner01.jpg" alt="">
+					</li>
+				</ul>
+				<div class="cicle">
+					<ol>
+						<li class="current"></li>
+						<li></li>
+					</ol>
+				</div>			
+			</div>
+			
+		</div>
+	</div>
+				
+	<!-- 美容左边头部导航（背景） -->
+	<div class="beauty_nav">
+		<p></p>
+	</div>	
+	
+	<!-- 美容轮播图下面 -->
+	<div class="content">
+		<div class="con">
+			<ol>
+				<li>
+					<a href="JavaScript:void(0)">护肤</a>
+				</li>
+				<li>
+					<a href="JavaScript:void(0)">资讯</a>
+				</li>
+				<li>
+					<a href="JavaScript:void(0)">彩妆</a>
+				</li>
+				<li>
+					<a href="JavaScript:void(0)">减肥</a>
+				</li>
+				<li>
+					<a href="JavaScript:void(0)">美发</a>
+				</li>
+				<li>
+					<a href="JavaScript:void(0)">香水</a>
+				</li>
+			</ol>
+			<div class="ul">
+				<ul style="opacity: 1;">
+					<li class="rig_pic">
+						<img src="images/beauty_rigsmalpic01.jpg" alt="">
+						<div class="bea_ritext">
+							<a href="#">相宜本草红景天莹透幼白精华乳<br>（明星产品）</a><br>
+							<span>相宜本草</span>
+							<span>试用份数：10份</span><br>
+							<button>查看福利报告</button>
+						</div>
+					</li>
+			
+					<li class="rig_pic">
+						<img src="images/beauty_rigsmalpic02.jpg" alt="">
+						<div class="bea_ritext" id="one">
+							<a href="#">相宜本草芯净自然净肤保湿水</a><br>
+							<span>相宜本草</span>
+							<span>试用份数：10份</span><br>
+							<button>查看福利报告</button>
+						</div>
+					</li>
+			
+					<li class="rig_pic">
+						<img src="images/beauty_rigsmalpic03.jpg" alt="">
+						<div class="bea_ritext" id="one">
+							<a href="#">相宜本草四倍蚕丝补水亮肤面膜</a><br>
+							<span>相宜本草</span>
+							<span>试用份数：5份</span><br>
+							<button>查看福利报告</button>
+						</div>
+					</li>
+					<li class="rig_pic">
+						<img src="images/beauty_rigsmalpic04.jpg" alt="">
+						<div class="bea_ritext" id="one">
+							<a href="#">七萃精华果油乳</a><br>
+							<span>果本</span>
+							<span>试用份数：30份</span><br>
+							<button>查看福利报告</button>
+						</div>
+					</li>
+				
+					<li class="rig_pic">
+						<img src="images/beauty_rigsmalpic05.jpg" alt="">
+						<div class="bea_ritext">
+							<a href="#">水密码小蓝盒·水CC<br>《美女与野兽》限量版</a><br>
+							<span>水密码</span>
+							<span>试用份数：30份</span><br>
+							<button>查看福利报告</button>
+						</div>
+					</li>
+					<li class="rig_pic">
+						<img src="images/beauty_rigsmalpic06.jpg" alt="">
+						<div class="bea_ritext" id="one">
+							<a href="#">美迪惠尔乳清蛋白面膜</a><br>
+							<span>美迪惠尔</span>
+							<span>试用份数：10份</span><br>
+							<button>查看福利报告</button>
+						</div>
+					</li>
+				</ul>
+				<ul style="opacity: 0;">
+					<li><a href="#"><h4>博闻开启“跨界-点亮生活+”活动 打造珠宝跨界合作平台</h4><img src="images/beauty_con01.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>艾莱依以“猎滟”为主题发布2019春夏新品</h4><img src="images/beauty_con02.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>实力小生朱一龙一组活力单车写真曝光</h4><img src="images/beauty_con03.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>拒绝纤瘦羽绒服 今年就要Oversize超长款</h4><img src="images/beauty_con04.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>逃出明星、时尚博主身体 我们应该怎么搭配衣服？</h4><img src="images/beauty_con05.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>白色单品你想好怎么搭了吗？</h4><img src="images/beauty_con06.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>参加正式场合如果有这么一条白裙子 那仙气儿也没谁了！</h4><img src="images/beauty_con07.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>美美美！袁姗姗大秀锁骨香肩 美的像只黑天鹅</h4><img src="images/beauty_con08.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>LIUJO 2016 春夏新品 四种风格美美过夏天</h4><img src="images/beauty_con09.jpeg" alt=""></a></li>
+				</ul>
+				<ul style="opacity: 0;">
+					<li><a href="#"><h4>给无神眼一个翻身的机会</h4><img src="images/beauty_con10.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>圣诞妆容 纯净容颜如冰雪奇缘般难忘！</h4><img src="images/beauty_con11.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>绝对不要在这五个地方放你的化妆品！</h4><img src="images/beauty_con12.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>最新眉部美妆产品你需要知道这些</h4><img src="images/beauty_con13.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>绝美唇妆来袭，众星演绎Dior迪奥魅惑姿态</h4><img src="images/beauty_con14.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>选好美妆产品让你轻松度假不脱妆</h4><img src="images/beauty_con15.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>MAC品牌史无前例的跨界合作</h4><img src="images/beauty_con16.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>99%的人都不知道！口红居然有这样的妙用</h4><img src="images/beauty_con17.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>又真相了！ 跟广场舞大妈一起过节的心塞</h4><img src="images/beauty_con18.jpeg" alt=""></a></li>
+				</ul>
+				<ul style="opacity: 0;">
+					<li><a href="#"><h4>告别大象腿 在露肤季节让你纤细而美丽</h4><img src="images/beauty_con19.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>走出瘦身怪圈 刘承羽分享好身材的秘诀</h4><img src="images/beauty_con20.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>10分钟4个动作 关晓彤的大长腿归你了</h4><img src="images/beauty_con21.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>讲真！对“症”减肥躺着都会瘦</h4><img src="images/beauty_con22.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>运动没有用！其实你是“熬“肥的</h4><img src="images/beauty_con23.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>节后吃7种食物迅速瘦腿</h4><img src="images/beauty_con24.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>洗澡减肥法 教你如何正确的洗澡</h4><img src="images/beauty_con25.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>你还在爬楼梯减肥？赶紧试试这种台阶训练法</h4><img src="images/beauty_con26.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>只需三天的饮食调整法 饭局多也不怕胖</h4><img src="images/beauty_con27.jpeg" alt=""></a></li>
+				</ul>
+				<ul style="opacity: 0;">
+					<li><a href="#"><h4>我们该如何营救日益老去的头发？</h4><img src="images/beauty_con28.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>春天做女神离不开这 17 款编发！</h4><img src="images/beauty_con29.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>巴黎欧莱雅沙龙专属 掀起京城时尚发型狂潮</h4><img src="images/beauty_con30.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>颜值高才敢这么剪 3款短发90%的男人都夸好</h4><img src="images/beauty_con31.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>有图有真相！换个发型比整容都管用</h4><img src="images/beauty_con32.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>都快掉秃了！关键3招轻松搞定春季脱发</h4><img src="images/beauty_con33.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>又减龄又拉风！半梳丸子头还不造起来</h4><img src="images/beauty_con34.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>今年最热门发型</h4><img src="images/beauty_con35.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>Sorry ladies 现在编麻花辫是男人的事儿了！</h4><img src="images/beauty_con36.jpeg" alt=""></a></li>
+				</ul>
+				<ul style="opacity: 0;">
+					<li><a href="#"><h4>LANVIN花韵的纯真年代</h4><img src="images/beauty_con46.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>闻得到的生活美学</h4><img src="images/beauty_con47.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>上万种香水类型 据说只有1%的人会选</h4><img src="images/beauty_con48.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>完美日记浮光系列香水北京新品发布会</h4><img src="images/beauty_con49.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>春节邂逅情人节，年味浪漫两不误</h4><img src="images/beauty_con50.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>L'OCCITANE欧舒丹初恋樱花香氛系列限量上市</h4><img src="images/beauty_con51.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>女香太矫情？ 组团买男香吧</h4><img src="images/beauty_con52.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>不看吃亏！你们女神用的东西都在这</h4><img src="images/beauty_con53.jpeg" alt=""></a></li>
+					<li><a href="#"><h4>盘点！7个抢了女人“饭碗”的男人们</h4><img src="images/beauty_con54.jpeg" alt=""></a></li>
+				</ul>
+			</div>	
+		</div>
+	</div>	
+	
+	<!-- 底部导航栏 -->
+	<div class="footer">
+		<div class="footer_nav">
+			<img src="images/logo_footer.png" alt="">
+			<div class="nav">
+				<ul>
+					<li>
+						<a href="#">关于我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">合作媒体</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">联系我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">隐私声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">版权声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">加入我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">关于时尚</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer_text">
+				©1998-2018 北京时尚在线网络服务有限公司 版权所有 TRENDS.COM.CN All Rights Reserved. <br> 京ICP备08004417号-19 | <a href="#">京公网安备11010502034577号</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

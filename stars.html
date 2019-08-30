@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/favicon.ico">
+	<title>娱乐频道-首页</title>
+	<script src="js/jquery-1.11.1.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/stars.css">
+    <script>
+        $(function(){
+            $('.top_nav .nav ul li a').mouseenter(function(event) {
+                $(this).css('color', '#b65500').parent('.top_nav .nav ul li').siblings('li').children('a').css('color', '#fff');
+            });
+            $('.top_nav .nav ul li a').mouseleave(function(event) {
+                $(this).css('color', '#fff');
+                $('.top_nav .nav ul li:nth-of-type(9)').children('a').css('color', '#b65500');
+            });
+            $('.top_nav .nav ul li a').click(function(event) {
+                $(this).css('text-decoration', 'none');
+            });
+            $('.top_logo .logo .search').click(function(event) {
+                var value=$('.top_logo .logo .txt').val();
+                console.log(value);
+                if(value==''){
+                    alert('请输入要搜索的内容~');
+                }
+            
+            });
+
+
+             // 轮播图
+            var timer;
+            var num=0;
+            var index=0;
+            function banner(){
+                clearInterval(timer);
+                timer=setInterval(function(){
+                    num++;
+                    if(num>2){
+                        $('.stars .stars_banner .slide ul').css('left', 0+'px');
+                        num=1;
+                    }
+                    if(num==2){
+                        index=0;
+                        $('.stars .stars_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.stars .stars_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+                    $('.stars .stars_banner .slide ul').animate({left: -num*1000+'px'},500);
+                    
+                },2000);
+            }
+            // 点击小圆圈
+            $('.stars .stars_banner .cicle ol li').click(function(event) {
+                $(this).addClass('current').siblings('li').removeClass('current');
+                num=$(this).index();
+                $('.stars .stars_banner .slide ul').animate({left: -num*1000+'px'},500);
+                
+            });
+            banner();
+            // 焦点图移入移出
+            $('.stars .stars_banner').mouseenter(function(event) {
+                clearInterval(timer);
+            });
+            $('.stars .stars_banner').mouseleave(function(event) {
+                banner();
+            });
+
+            
+
+            // 焦点图点击
+            $('.stars .stars_banner #span_left').click(function(event) {
+                clearInterval(timer);
+                timer=setTimeout(function(){
+                    num++;
+                    if(num>2){
+                        $('.stars .stars_banner .slide ul').css('left', 0+'px');
+                        num=1;
+                    }
+                    if(num==2){
+                        index=0;
+                        $('.stars .stars_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.stars .stars_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+                    $('.stars .stars_banner .slide ul').animate({left: -num*1000+'px'},500);
+                    
+                },1000);                
+            });
+            $('.stars .stars_banner #span_right').click(function(event) {
+                clearInterval(timer);
+                timer=setTimeout(function(){
+                    num--;
+                    if(num<0){
+                        $('.stars .stars_banner .slide ul').css('left', -2000+'px');
+                        num=1;
+                    }
+                    if(num==0){
+                        index=0;
+                        $('.stars .stars_banner .cicle ol li').eq(index).addClass('current').siblings('').removeClass('current');
+                    }
+                    $('.stars .stars_banner .cicle ol li').eq(num).addClass('current').siblings('').removeClass('current');
+                    $('.stars .stars_banner .slide ul').animate({left: -num*1000+'px'},500);  
+                            
+                },1000);        
+            });
+
+
+            var ulnum=0; 
+            // 点击换一换
+            $('.content .right .ri_text span').click(function(event) {
+                ulnum++;
+                if(ulnum>3){
+                    ulnum=0;
+                }
+                console.log(ulnum);
+                $('.content .right .ri_text ul').eq(ulnum).css('opacity', '1').siblings('ul').css('opacity', '0');  
+            });
+
+
+            $('.content .con ul li').hover(function() {
+                var conli=$(this).index();
+                console.log(conli);
+                $('.content .con ul').children('li').eq(conli).children('a').children('h4').css('bottom', '-155px').parents('li').siblings('li').children('a').children('h4').css('bottom', '-213px');
+                $('.content .con ul li').eq(conli).css('opacity', '0.8').siblings('li').css('opacity', '1');
+            }, function() {
+                $('.content .con ul li').css('opacity', '1');
+                $('.content .con ul li a h4').css('bottom', '-213px');
+            });
+        })
+    </script>
+</head>
+<body>
+	<!-- 顶部logo -->
+	<div class="top_logo">
+		<div class="logo">
+			<img src="images/logo.png" alt="">
+			<input type="text" class="txt"><input type="submit" value="搜索" class="search">
+		</div>		
+	</div>
+	<!-- 顶部导航栏 -->
+	<div class="top_nav">
+		<div class="nav">
+			<ul>
+				<li class="frist">
+					<a href="index.html">首页</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="fashion.html">风尚</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="beauty.html">美容</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="life.html">生活</a>
+				</li>
+				<li class="line">|</li>
+				<li>
+					<a href="stars.html">娱乐</a>
+				</li>
+			</ul>
+		</div>	
+	</div>
+
+    <!-- 娱乐区 -->
+    <div  class="stars">
+        <!-- 娱乐轮播图 -->
+        <div class="stars_banner">
+            <span class="glyphicon glyphicon-menu-left" id="span_left"></span>
+            <span class="glyphicon glyphicon-menu-right" id="span_right"></span>
+            
+            <div class="slide">
+                <ul>
+                    <li>
+                        <h3>王智 | 越强大 越柔软</h3>
+                        <img src="images/stars_ban02.jpg" alt="">
+                    </li>
+                    <li>
+                        <h3>郑元畅 | 像孩子一样</h3>
+                        <img src="images/stars_ban01.jpg" alt="">
+                    </li>
+                     <li>
+                        <h3>王智 | 越强大 越柔软</h3>
+                        <img src="images/stars_ban02.jpg" alt="">
+                    </li>
+                </ul>
+                  <div class="cicle">
+                    <ol>
+                        <li class="current"></li>
+                        <li></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 娱乐左边头部导航（背景） -->
+    <div class="stars_nav">
+        <p></p>
+        <ul>
+            <li>
+                <a href="#">名人</a>
+            </li>               
+            <li>
+                <a href="#">电影</a>
+            </li>               
+            <li>
+                <a href="#">电视</a>
+            </li>
+            <li>
+                <a href="#">综艺</a>
+            </li>
+            <li>
+                <a href="#">八卦</a>
+            </li>
+            <li>
+                <a href="#">音乐</a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- 娱乐轮播图下面 -->
+    <div class="content"> 
+        <div class="con">
+            <ul>
+                <li><a href="#"><h4>《紧急救援》最强中国救援天团，集结完毕！</h4><img src="images/stars_con01.jpeg" alt=""></a></li>
+                <li><a href="#"><h4>叶泳湘 | 此心安处是桃源</h4><img src="images/stars_con02.jpeg" alt=""></a></li>
+                <li><a href="#"><h4>献礼祖国华诞时刻 | 用电影讲述新中国的七个历史瞬间</h4><img src="images/stars_con03.jpeg" alt=""></a></li>
+                <li><a href="#"><h4>王俊凯 | 成长的年轮</h4><img src="images/stars_con04.jpeg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <h3>热点</h3>
+            <div class="ri_text">
+                <ul class="ul1">
+                    <li>
+                        <a href="#">减肥</a>
+                    </li>
+                    <li>
+                        <a href="#">发型</a>
+                    </li>
+                    <li>
+                        <a href="#">平底鞋</a>
+                    </li>
+                    <li>
+                        <a href="#">韩剧</a>
+                    </li>
+                    <li>
+                        <a href="#">肌底液</a>
+                    </li>
+                    <li>
+                        <a href="#">综艺</a>
+                    </li>
+                    <li>
+                        <a href="#">趋势</a>
+                    </li>
+                    <li>
+                        <a href="#">美白</a>
+                    </li>
+                    <li>
+                        <a href="#">补水</a>
+                    </li>
+                    <li>
+                        <a href="#">家居</a>
+                    </li>
+                    <li>
+                        <a href="#">街拍</a>
+                    </li>
+                    <li>
+                        <a tref="#">欧美娱乐</a>
+                    </li>
+                    <li>
+                        <a href="#">抗衰老</a>
+                    </li>
+                    <li>
+                        <a href="#">去角质</a>
+                    </li>
+                    <li>
+                        <a href="#">眼袋</a>
+                    </li>
+                    <li>
+                        <a href="#">演员</a>
+                    </li>
+                    <li>
+                        <a href="#">彩妆</a>
+                    </li>
+                    <li>
+                        <a href="#">帽子</a>
+                    </li>
+                    <li>
+                        <a href="#">肩包</a>
+                    </li>
+                    <li>
+                        <a href="#">长发</a>
+                    </li>
+                    <li>
+                        <a href="#">凉鞋</a>
+                    </li>
+                    <li>
+                        <a href="#">手拿包</a>
+                    </li>
+                    <li>
+                        <a href="#">短裙</a>
+                    </li>
+                    <li>
+                        <a href="#">遮瑕</a>
+                    </li>
+                </ul>
+                <ul class="ul2">
+                    <li>
+                        <a href="#">抗氧化</a>
+                    </li>
+                    <li>
+                        <a href="#">高跟鞋</a>
+                    </li>
+                    <li>
+                        <a tref="#">美容仪器</a>
+                    </li>
+                    <li>
+                        <a href="#">精华</a>
+                    </li>
+                    <li>
+                        <a tref="#">身体护理</a>
+                    </li>
+                    <li>
+                        <a href="#">电视剧</a>
+                    </li>
+                    <li>
+                        <a tref="#">明星发型</a>
+                    </li>
+                    <li>
+                        <a href="#">美甲</a>
+                    </li>
+                    <li>
+                        <a href="#">同款</a>
+                    </li>
+                    <li>
+                        <a href="#">口红</a>
+                    </li>
+                    <li>
+                        <a href="#">衬衫</a>
+                    </li>
+                    <li>
+                        <a href="#">指甲油</a>
+                    </li>
+                    <li>
+                        <a href="#">菜谱</a>
+                    </li>
+                    <li>
+                        <a href="#">化妆水</a>
+                    </li>
+                    <li>
+                        <a href="#">时装周</a>
+                    </li>
+                    <li>
+                        <a href="#">美食</a>
+                    </li>
+                    <li>
+                        <a href="#">卷发</a>
+                    </li>
+                    <li>
+                        <a href="#">控油</a>
+                    </li>
+                    <li>
+                        <a href="#">双肩包</a>
+                    </li>
+                    <li>
+                        <a href="#">眼霜</a>
+                    </li>
+                    <li>
+                        <a href="#">卸妆</a>
+                    </li>
+                    <li>
+                        <a href="#">秀场</a>
+                    </li>
+                    <li>
+                        <a href="#">装修</a>
+                    </li>
+                    <li>
+                        <a href="#">电竞</a>
+                    </li>
+                </ul>
+                <ul class="ul3">
+                    <li>
+                        <a href="#">长裙</a>
+                    </li>
+                    <li>
+                        <a href="#">酒店</a>
+                    </li>
+                    <li>
+                        <a href="#">抗皱</a>
+                    </li>
+                    <li>
+                        <a href="#">染发</a>
+                    </li>
+                    <li>
+                        <a href="#">黑头</a>
+                    </li>
+                    <li>
+                        <a href="#">手提包</a>
+                    </li>
+                    <li>
+                        <a href="#">旅行</a>
+                    </li>
+                    <li>
+                        <a href="#">脱毛</a>
+                    </li>
+                    <li>
+                        <a href="#">BB霜</a>
+                    </li>
+                    <li>
+                        <a href="#">数码</a>
+                    </li>
+                    <li>
+                        <a href="#">防晒霜</a>
+                    </li>
+                    <li>
+                        <a href="#">靴子</a>
+                    </li>
+                    <li>
+                        <a href="#">两性</a>
+                    </li>
+                    <li>
+                        <a href="#">睫毛膏</a>
+                    </li>
+                    <li>
+                        <a href="#">眼线</a>
+                    </li>
+                    <li>
+                        <a href="#">音乐</a>
+                    </li>
+                    <li>
+                        <a href="#">歌手</a>
+                    </li>
+                    <li>
+                        <a href="#">餐厅</a>
+                    </li>
+                    <li>
+                        <a href="#">眉笔</a>
+                    </li>
+                    <li>
+                        <a href="#">短发</a>
+                    </li>
+                    <li>
+                        <a href="#">去眼纹</a>
+                    </li>
+                    <li>
+                        <a href="#">唇膏</a>
+                    </li>
+                    <li>
+                        <a href="#">腮红</a>
+                    </li>
+                    <li>
+                        <a href="#">去斑</a>
+                    </li>
+                </ul>
+                <ul class="ul4">
+                    <li>
+                        <a href="#">珠宝</a>
+                    </li>
+                    <li>
+                        <a href="#">香水</a>
+                    </li>
+                    <li>
+                        <a href="#">洗甲水</a>
+                    </li>
+                    <li>
+                        <a href="#">面膜</a>
+                    </li>
+                    <li>
+                        <a href="#">文化</a>
+                    </li>
+                    <li>
+                        <a href="#">洁面</a>
+                    </li>
+                    <li>
+                        <a href="#">八卦</a>
+                    </li>
+                    <li>
+                        <a href="#">防晒</a>
+                    </li>
+                    <li>
+                        <a href="#">眼影</a>
+                    </li>
+                    <li>
+                        <a href="#">音乐节</a>
+                    </li>
+                    <li>
+                        <a href="#">黑眼圈</a>
+                    </li>
+                    <li>
+                        <a href="#">清洁</a>
+                    </li>
+                    <li>
+                        <a href="#">电影节</a>
+                    </li>
+                    <li>
+                        <a href="#">男士</a>
+                    </li>
+                    <li>
+                        <a href="#">乳液</a>
+                    </li>
+                    <li>
+                        <a href="#">电影</a>
+                    </li>
+                    <li>
+                        <a href="#">墨镜</a>
+                    </li>
+                    <li>
+                        <a href="#">设计师</a>
+                    </li>
+                    <li>
+                        <a href="#">底妆</a>
+                    </li>
+                    <li>
+                        <a href="#">隔离霜</a>
+                    </li>
+                    <li>
+                        <a href="#">滋润</a>
+                    </li>
+                    <li>
+                        <a href="#">围巾</a>
+                    </li>
+                    <li>
+                        <a href="#">汽车</a>
+                    </li>
+                    <li>
+                        <a href="#">T恤</a>
+                    </li>
+                </ul>
+                <span>换一换 ></span>
+            </div>
+        </div>   
+    </div>
+	
+	<div class="footer">
+		<div class="footer_nav">
+			<img src="images/logo_footer.png" alt="">
+			<div class="nav">
+				<ul>
+					<li>
+						<a href="#">关于我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">合作媒体</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">联系我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">隐私声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">版权声明</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">加入我们</a>
+					</li>
+					<li class="line">|</li>
+					<li>
+						<a href="#">关于时尚</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer_text">
+				©1998-2018 北京时尚在线网络服务有限公司 版权所有 TRENDS.COM.CN All Rights Reserved. <br> 京ICP备08004417号-19 | <a href="#">京公网安备11010502034577号</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

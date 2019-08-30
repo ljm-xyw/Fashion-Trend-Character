@@ -1,0 +1,379 @@
+.top_nav .nav ul li:nth-of-type(5) a{
+	color: #b65500;
+}
+.beauty{
+	width: 100%;
+	top: 0px;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+.beauty .beauty_banner{
+	width: 1000px;
+	height: 480px;
+	position: relative;
+	margin: 0 auto;
+	cursor: pointer;
+}
+.beauty .beauty_banner span{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	font-size: 20px;
+	line-height: 40px;
+	text-align: center;
+	color: #ccc;
+	background-color: rgba(0, 0, 0, 0.9);
+	top: 50%;
+	margin-top: -20px;
+	z-index: 4;
+}
+.beauty .beauty_banner span:nth-of-type(1){
+	left: 15px;
+}
+.beauty .beauty_banner span:nth-of-type(2){
+	right: -15px;
+}
+.slide .cicle{
+	bottom: 20px;
+	width: 60px;
+	left: 50%;
+	margin-left: -30px;
+	position: absolute;
+}
+.slide .cicle ol{
+	width: 60px;
+	height: 10px;
+	overflow: hidden;
+}
+.slide .cicle ol li{
+	width: 10px;
+	height: 10px;
+	border: 1px solid #aaa;
+	border-radius: 50%;
+	background-color: #aaa;
+	float: left;
+	z-index: 10;
+	margin: 0px 10px;
+}
+.slide .cicle ol .current{
+	border: 1px solid #fff;
+	background-color: #fff;
+}
+.beauty .beauty_banner .slide{
+	width: 1000px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.beauty .beauty_banner .slide ul{
+	width: 3000px;
+	overflow: hidden;
+	position: relative;
+	left: 0px;
+}
+.beauty .beauty_banner .slide ul li{
+	float: left;
+	position: relative;
+	text-align: center;
+}
+.beauty .beauty_banner .slide ul li h3{
+	width: 1000px;
+	bottom: 50px;
+	position: absolute;
+	color: #fff;
+	z-index: 1;
+}
+.beauty_nav{
+	width: 1000px;
+	height: 60px;
+	text-align: center;
+	position: relative;
+	top: 80px;
+	margin: 0 auto;
+}
+.beauty_nav p{
+	width: 1000px;
+	height: 120px;
+	background: url('../images/caption.png') -20px -260px;
+	position: relative;
+}
+.content{
+	position: relative;
+	top: 150px;
+}
+.content .con{
+	position: relative;
+	top: 5px;
+}
+.content .con ol{
+	width: 960px;
+	margin: 0 auto 10px;
+	overflow: hidden;
+}
+.content .con ol li{
+	width: 60px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #aaa;
+	float: left;
+	text-align: center;
+	margin: 5px 50px;	
+}
+.content .con ol li a{
+	display: inline-block;
+	width: 60px;
+	height: 30px;
+	line-height: 30px;
+	color: #666;
+	cursor: pointer;
+	transition: 1s;
+	text-decoration: none;
+	outline: none;
+}
+.content .con ol li:nth-of-type(1) a{
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.6);
+	border: none;
+}
+.content .con .ul{
+	width: 1080px;
+	height: 1018px;
+}
+.content .con ul:nth-of-type(1){
+	width: 1080px;
+	height: 1018px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	margin-left: -540px;
+	z-index: 20;
+}
+.content .con ul:nth-of-type(1) li.rig_pic{
+	width: 320px;
+	height: 500px;
+	float: left;
+	margin: 20px;
+	border: 1px solid #999;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.content .con ul:nth-of-type(1) li.rig_pic img{
+	display: block;
+	width: 318px;
+	height: 380px;
+}
+.content .con ul:nth-of-type(1) li.rig_pic .bea_ritext{
+	background-color: rgba(0, 0, 0, 0.6);
+	font-size: 16px;
+	text-align: center;
+	padding: 10px;
+	color: #ddd;
+	line-height: 22px;
+}
+.content .con ul:nth-of-type(1) li.rig_pic .bea_ritext a{
+	margin-top: 20px;
+	color: #ddd;
+}
+.content .con ul:nth-of-type(1) li.rig_pic .bea_ritext span:nth-of-type(1){
+	left: 0px;
+}
+.content .con ul:nth-of-type(1) li.rig_pic .bea_ritext span:nth-of-type(2){
+	right: 0px;
+}
+.content .con ul:nth-of-type(1) li.rig_pic .bea_ritext button{
+	width: 200px;
+	height: 32px;
+	color: #ddd;
+	background-color: #333;
+	border: 1px solid #333;
+
+}
+.content .con ul:nth-of-type(1) li.rig_pic #one{
+	line-height: 33px;
+	background-color: rgba(0, 0, 0, 0.6);
+	font-size: 16px;
+	color: #ddd;
+	text-align: center;
+	padding: 10px;
+}
+.content .con ul:nth-of-type(1) li.rig_pic #one a{
+	margin-top: 20px;
+	color: #ddd;
+}
+.content .con ul:nth-of-type(1) li.rig_pic #one span:nth-of-type(1){
+	left: 0px;
+}
+.content .con ul:nth-of-type(1) li.rig_pic #one span:nth-of-type(2){
+	right: 0px;
+}
+.content .con ul:nth-of-type(1) li.rig_pic #one button{
+	width: 200px;
+	height: 32px;
+	color: #ddd;
+	background-color: #333;
+	border: 1px solid #333;
+}
+.content .con ul:nth-of-type(2){
+	width: 990px;
+	left: 50%;
+	margin-left: -495px;
+	position: absolute;
+}
+.content .con ul:nth-of-type(2) li{
+	width: 300px;
+	height: 300px;
+	position: relative;
+	float: left;
+	margin: 15px;
+	overflow: hidden;
+	opacity: 1;
+}
+.content .con ul:nth-of-type(2) li a img{
+	width: 300px;
+	height: 300px;
+}
+.content .con ul li a{
+	position: relative;
+}
+.content .con ul:nth-of-type(2) li a h4{
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: absolute;
+	bottom: -155px;
+}
+.content .con ul:nth-of-type(3){
+	width: 990px;
+	left: 50%;
+	margin-left: -495px;
+	position: absolute;
+}
+.content .con ul:nth-of-type(3) li{
+	width: 300px;
+	height: 300px;
+	position: relative;
+	float: left;
+	margin: 15px;
+}
+.content .con ul:nth-of-type(3) li a img{
+	width: 300px;
+	height: 300px;
+}
+.content .con ul li a{
+	position: relative;
+}
+.content .con ul:nth-of-type(3) li a h4{
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: absolute;
+	bottom: -155px;
+}
+.content .con ul:nth-of-type(4){
+	width: 990px;
+	left: 50%;
+	margin-left: -495px;
+	position: absolute;
+}
+.content .con ul:nth-of-type(4) li{
+	width: 300px;
+	height: 300px;
+	position: relative;
+	float: left;
+	margin: 15px;
+	overflow: hidden;
+	opacity: 1;
+}
+.content .con ul:nth-of-type(4) li a img{
+	width: 300px;
+	height: 300px;
+}
+.content .con ul li a{
+	position: relative;
+}
+.content .con ul:nth-of-type(4) li a h4{
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: absolute;
+	bottom: -155px;
+}
+.content .con ul:nth-of-type(5){
+	width: 990px;
+	left: 50%;
+	margin-left: -495px;
+	position: absolute;
+}
+.content .con ul:nth-of-type(5) li{
+	width: 300px;
+	height: 300px;
+	position: relative;
+	float: left;
+	margin: 15px;
+	overflow: hidden;
+	opacity: 1;
+}
+.content .con ul:nth-of-type(5) li a img{
+	width: 300px;
+	height: 300px;
+}
+.content .con ul li a{
+	position: relative;
+}
+.content .con ul:nth-of-type(5) li a h4{
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: absolute;
+	bottom: -155px;
+}
+.content .con ul:nth-of-type(6){
+	width: 990px;
+	left: 50%;
+	margin-left: -495px;
+	position: absolute;
+}
+.content .con ul:nth-of-type(6) li{
+	width: 300px;
+	height: 300px;
+	position: relative;
+	float: left;
+	margin: 15px;
+	overflow: hidden;
+	opacity: 1;
+}
+.content .con ul:nth-of-type(6) li a img{
+	width: 300px;
+	height: 300px;
+}
+.content .con ul li a{
+	position: relative;
+}
+.content .con ul:nth-of-type(6) li a h4{
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: absolute;
+	bottom: -155px;
+}
+.footer{
+	width: 100%;
+	height: 200px;
+	background-color: rgba(0, 0, 0, 0.8);
+	top: 200px;
+	position: relative;
+}
