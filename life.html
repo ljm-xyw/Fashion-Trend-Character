@@ -105,6 +105,7 @@
 
              // 滚轮触发和按键触发事件
 			$(window).scroll(function(event) {
+				alert()
 				var heg=$(window).scrollTop();
 				var ulheg=$('.content .con').children('ul.a').offset().top;
 				var ulheg1=$('.content .con').children('ul.b').offset().top;
@@ -122,19 +123,18 @@
 					$('.content .con ul.b').css('display', 'none');
 					$('.content .con ul.c').css('display', 'none');
 					$('.btn button').css('display', 'block');
-					$('.btn button').click(function(event) {
-						$('.content .con ul.b').css('display', 'block');
-						$('.btn button').css('display', 'block');
-					});
 				}
 				if(heg<ulheg1){
 					$('.content .con ul.c').css('display', 'none');
 					$('.btn button').css('display', 'block');
-					$('.btn button').click(function(event) {
-						$('.content .con ul.c').css('display', 'block');
-						$('.btn button').css('display', 'block');
-					});
 				}
+			});
+			$('.btn button').click(function(event) {
+				$('.content .con ul.b').css('display', 'block');
+				$('.content .con ul.c').toggle();
+				$('.btn button').css('display', 'block');
+				
+				
 			});
 
 		})
