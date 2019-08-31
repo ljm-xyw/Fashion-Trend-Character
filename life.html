@@ -127,12 +127,13 @@
 					$('.content .con ul.c').css('display', 'none');
 					$('.btn button').css('display', 'block');
 				}
+				$('.btn button').click(function(event) {
+					$('.content .con ul.b').css('display', 'block');
+					$('.content .con ul.c').toggle();
+					$('.btn button').css('display', 'block');		
+				});
 			});
-			$('.btn button').click(function(event) {
-				$('.content .con ul.b').css('display', 'block');
-				$('.content .con ul.c').toggle();
-				$('.btn button').css('display', 'block');		
-			});
+			
 		})
 	</script>
 </head>
